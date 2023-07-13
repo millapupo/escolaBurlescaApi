@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Table(name = "alunas")
 @Entity(name = "Aluna")
 @Getter
@@ -21,8 +23,10 @@ public class Aluna {
     private String nome;
     private String email;
     private String telefone;
+    @ElementCollection
+    @CollectionTable(name = "alunas_modalidades")
     @Enumerated(EnumType.STRING)
-    private Modalidade modalidade;
+    private List<Modalidade> modalidade;
 
     public Aluna(AlunaDTO dados) {
         this.nome = dados.nome();

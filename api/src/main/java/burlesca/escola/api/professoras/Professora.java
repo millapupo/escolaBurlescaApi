@@ -27,7 +27,6 @@ public class Professora {
     @Enumerated(EnumType.STRING)
     private List<Modalidade> modalidade;
 
-
     public Professora(ProfessoraDTO dados) {
         this.nome = dados.nome();
         this.email = dados.email();

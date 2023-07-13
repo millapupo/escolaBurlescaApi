@@ -15,7 +15,6 @@ public class AlunaController {
 
     @Autowired
     private AlunaRepository repository;
-
     @PostMapping
     public void cadastrar(@RequestBody AlunaDTO dados){
         repository.save(new Aluna(dados));
