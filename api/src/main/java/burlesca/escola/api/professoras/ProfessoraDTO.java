@@ -13,11 +13,9 @@ public record ProfessoraDTO(
         String email,
         @NotBlank
         String telefone,
-        List<Modalidade> modalidades){}
+        @NotNull
+        List<Modalidade> modalidade){}
 
-
-
-        //List<Modalidade> modalidades){}
 
 
 

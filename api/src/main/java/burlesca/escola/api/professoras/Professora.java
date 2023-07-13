@@ -22,16 +22,16 @@ public class Professora {
     private String email;
     private String telefone;
 
-    //@ElementCollection
+    @ElementCollection
+    @CollectionTable(name = "professoras_modalidades")
     @Enumerated(EnumType.STRING)
-    @ElementCollection(targetClass = Modalidade.class)
-    @CollectionTable(name = "modalidade", joinColumns = @JoinColumn(name = "id"))
-    private List<Modalidade> modalidades;
+    private List<Modalidade> modalidade;
+
 
     public Professora(ProfessoraDTO dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
-        this.modalidades = dados.modalidades();
+        this.modalidade = dados.modalidade();
     }
 }

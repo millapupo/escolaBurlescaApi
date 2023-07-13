@@ -23,7 +23,5 @@ public class ProfessoraController {
     @Transactional
     public void cadastrar(@RequestBody @Valid ProfessoraDTO dados){
         repository.save(new Professora(dados));
-
     }
-
 }
