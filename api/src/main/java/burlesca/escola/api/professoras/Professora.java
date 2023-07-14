@@ -33,4 +33,18 @@ public class Professora {
         this.telefone = dados.telefone();
         this.modalidade = dados.modalidade();
     }
+    public void atualizarInformacoes(AtualizacaoProfDTO dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
+        if(dados.email() != null){
+            this.email = dados.email();
+        }
+        if(dados.modalidade()!= null){
+            this.modalidade = dados.modalidade();
+        }
+    }
 }

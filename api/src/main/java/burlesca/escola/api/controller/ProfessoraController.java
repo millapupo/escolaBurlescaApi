@@ -1,9 +1,6 @@
 package burlesca.escola.api.controller;
 
-import burlesca.escola.api.professoras.ListagemProfDTO;
-import burlesca.escola.api.professoras.ProfessoraDTO;
-import burlesca.escola.api.professoras.ProfessoraRepository;
-import burlesca.escola.api.professoras.Professora;
+import burlesca.escola.api.professoras.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -27,5 +24,11 @@ public class ProfessoraController {
     @GetMapping
     public Stream<ListagemProfDTO> listar(Pageable paginacao){
         return repository.findAll(paginacao).stream().map(ListagemProfDTO::new);
+    }
+    @PutMapping
+    @Transactional
+    public void atualizar (@RequestBody @Valid AtualizacaoProfDTO dados){
+        var professora = repository.getReferenceById(dados.id());
+        professora.atualizarInformacoes(dados);
     }
 }
