@@ -23,12 +23,14 @@ public class Aluna {
     private String nome;
     private String email;
     private String telefone;
+    private Boolean ativo;
     @ElementCollection
     @CollectionTable(name = "alunas_modalidades")
     @Enumerated(EnumType.STRING)
     private List<Modalidade> modalidade;
 
     public Aluna(AlunaDTO dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -47,5 +49,8 @@ public class Aluna {
         if(dados.modalidade()!= null){
             this.modalidade = dados.modalidade();
         }
+    }
+    public void excluir() {
+        this.ativo = false;
     }
 }

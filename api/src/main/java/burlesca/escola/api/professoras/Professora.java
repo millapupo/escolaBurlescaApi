@@ -15,12 +15,14 @@ import java.util.List;
 
 public class Professora {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
     private String telefone;
+    private Boolean ativo;
 
     @ElementCollection
     @CollectionTable(name = "professoras_modalidades")
@@ -28,6 +30,7 @@ public class Professora {
     private List<Modalidade> modalidade;
 
     public Professora(ProfessoraDTO dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -46,5 +49,8 @@ public class Professora {
         if(dados.modalidade()!= null){
             this.modalidade = dados.modalidade();
         }
+    }
+    public void excluir() {
+        this.ativo = false;
     }
 }
