@@ -1,4 +1,4 @@
-package burlesca.escola.api.alunas;
+package burlesca.escola.api.domain.alunas;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

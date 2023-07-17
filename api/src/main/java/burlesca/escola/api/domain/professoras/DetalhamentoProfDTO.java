@@ -1,4 +1,4 @@
-package burlesca.escola.api.professoras;
+package burlesca.escola.api.domain.professoras;
 
 import java.util.List;
 

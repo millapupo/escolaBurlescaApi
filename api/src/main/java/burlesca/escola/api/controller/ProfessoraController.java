@@ -1,6 +1,6 @@
 package burlesca.escola.api.controller;
 
-import burlesca.escola.api.professoras.*;
+import burlesca.escola.api.domain.professoras.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,5 +45,11 @@ public class ProfessoraController {
         var professora = repository.getReferenceById(id);
         professora.excluir();
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var professora = repository.getReferenceById(id);
+        professora.excluir();
+        return ResponseEntity.ok(new DetalhamentoProfDTO(professora));
     }
 }

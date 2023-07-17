@@ -1,6 +1,6 @@
-package burlesca.escola.api.alunas;
+package burlesca.escola.api.domain.alunas;
 
-import burlesca.escola.api.professoras.Modalidade;
+import burlesca.escola.api.domain.Modalidade;
 
 import java.util.List;
 

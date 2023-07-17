@@ -1,19 +1,21 @@
-package burlesca.escola.api.professoras;
+package burlesca.escola.api.domain.alunas;
 
+import burlesca.escola.api.domain.Modalidade;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Table(name = "professoras")
-@Entity(name = "Professora")
+@Table(name = "alunas")
+@Entity(name = "Aluna")
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-
-public class Professora {
+public class Aluna {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,20 +24,19 @@ public class Professora {
     private String email;
     private String telefone;
     private Boolean ativo;
-
     @ElementCollection
-    @CollectionTable(name = "professoras_modalidades")
+    @CollectionTable(name = "alunas_modalidades")
     @Enumerated(EnumType.STRING)
     private List<Modalidade> modalidade;
 
-    public Professora(ProfessoraDTO dados) {
+    public Aluna(AlunaDTO dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.modalidade = dados.modalidade();
     }
-    public void atualizarInformacoes(AtualizacaoProfDTO dados) {
+    public void atualizarInformacoes(AtualizacaoAlunDTO dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }

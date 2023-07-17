@@ -1,4 +1,4 @@
-package burlesca.escola.api.professoras;
+package burlesca.escola.api.domain;
 public enum Modalidade {
     BOLLYWOOD,
     BURLESQUE,

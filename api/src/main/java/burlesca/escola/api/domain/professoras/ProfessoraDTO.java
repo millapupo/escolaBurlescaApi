@@ -1,5 +1,6 @@
-package burlesca.escola.api.professoras;
+package burlesca.escola.api.domain.professoras;
 
+import burlesca.escola.api.domain.Modalidade;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

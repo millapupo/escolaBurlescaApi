@@ -1,9 +1,6 @@
 package burlesca.escola.api.controller;
 
-import burlesca.escola.api.alunas.*;
-import burlesca.escola.api.professoras.DetalhamentoProfDTO;
-import burlesca.escola.api.professoras.ListagemProfDTO;
-import burlesca.escola.api.professoras.Professora;
+import burlesca.escola.api.domain.alunas.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,5 +44,11 @@ public class AlunaController {
         var aluna = repository.getReferenceById(id);
         aluna.excluir();
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var aluna = repository.getReferenceById(id);
+        aluna.excluir();
+        return ResponseEntity.ok(new DetalhamentoAlunDTO(aluna));
     }
 }
