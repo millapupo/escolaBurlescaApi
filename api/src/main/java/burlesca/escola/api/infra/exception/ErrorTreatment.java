@@ -1,4 +1,4 @@
-package burlesca.escola.api.infra;
+package burlesca.escola.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
