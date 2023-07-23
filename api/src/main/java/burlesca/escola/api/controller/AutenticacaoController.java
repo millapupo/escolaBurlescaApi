@@ -1,6 +1,9 @@
 package burlesca.escola.api.controller;
 
 import burlesca.escola.api.domain.usuario.DadosAutenticacaoDTO;
+import burlesca.escola.api.domain.usuario.Usuario;
+import burlesca.escola.api.infra.TokenService;
+import burlesca.escola.api.infra.security.DadosTokenJWTDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +20,16 @@ public class AutenticacaoController {
 
     @Autowired
     private AuthenticationManager manager;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacaoDTO dados){
 
         var token = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var authentication = manager.authenticate(token);
-        return ResponseEntity.ok().build();
+        var tokenJWT = tokenService.gerarToken((Usuario)authentication.getPrincipal());
+        return ResponseEntity.ok(new DadosTokenJWTDTO(tokenJWT));
     }
 }
 
