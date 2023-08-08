@@ -1,5 +1,6 @@
 package burlesca.escola.api.infra.exception;
 
+import burlesca.escola.api.domain.ValidacaoException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -23,5 +24,9 @@ public class ErrorTreatment {
         public DadosErroValidacaoDTO(FieldError erro){
             this(erro.getField(), erro.getDefaultMessage());
         }
+    }
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity ErroRegraDeNegocio(ValidacaoException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 }

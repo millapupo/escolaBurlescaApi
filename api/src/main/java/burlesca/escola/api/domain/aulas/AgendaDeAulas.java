@@ -1,5 +1,6 @@
 package burlesca.escola.api.domain.aulas;
 
+import burlesca.escola.api.domain.Modalidade;
 import burlesca.escola.api.domain.ValidacaoException;
 import burlesca.escola.api.domain.alunas.AlunaRepository;
 import burlesca.escola.api.domain.aulas.validacoes.agendamento.ValidadorAgendamentoDeAula;
@@ -25,7 +26,6 @@ public class AgendaDeAulas {
     @Autowired
     private List<ValidadorCancelamentoDeAula> validadorCancelamentoDeAulas;
 
-
     public DadosDetalheAulaDTO agendar(DadosAgendaAulaDTO dados) {
         if (!alunaRepository.existsById(dados.idAluna())) {
             throw new ValidacaoException("Id da aluna não existe!");
@@ -40,7 +40,7 @@ public class AgendaDeAulas {
         if(professora == null){
             throw new ValidacaoException("Não há professora disponível nesta data!");
         }
-        var aula = new Aula(null, professora, aluna, dados.data(), null);
+        var aula = new Aula(null, professora, aluna, dados.modalidade(), dados.data(), null);
         aulaRepository.save(aula);
         return new DadosDetalheAulaDTO(aula);
     }

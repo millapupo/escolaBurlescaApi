@@ -1,0 +1,1 @@
+alter table aulas add modalidade varchar(255) not null;

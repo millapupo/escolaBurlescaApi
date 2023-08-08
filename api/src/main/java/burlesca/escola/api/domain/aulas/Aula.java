@@ -1,5 +1,6 @@
 package burlesca.escola.api.domain.aulas;
 
+import burlesca.escola.api.domain.Modalidade;
 import burlesca.escola.api.domain.alunas.Aluna;
 import burlesca.escola.api.domain.professoras.Professora;
 import jakarta.persistence.*;
@@ -29,12 +30,16 @@ public class Aula {
     @JoinColumn(name = "aluna_id")
     private Aluna aluna;
 
+    @Column(name = "modalidade")
+    @Enumerated(EnumType.STRING)
+    @JoinColumn(name= "aula_id")
+    private Modalidade modalidade;
+
     private LocalDateTime data;
 
     @Column(name = "motivo_cancelamento")
     @Enumerated(EnumType.STRING)
     private MotivosCancelamento motivo;
-
     public void cancelar(MotivosCancelamento motivosCancelamento) {
         this.motivo = motivosCancelamento;
     }

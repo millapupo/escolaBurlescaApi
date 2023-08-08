@@ -15,7 +15,7 @@ public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoDeAula{
         var dataAula = dados.data();
         var agora = LocalDateTime.now();
         var diferencaEmDias = Duration.between(agora, dataAula).toDays();
-        if(diferencaEmDias > 2){
+        if(diferencaEmDias < 2){
             throw new ValidacaoException("Aula deve ser agendada com antecedência mínima de dois dias!");
         }
     }

@@ -1,6 +1,7 @@
 package burlesca.escola.api.controller;
 
 import burlesca.escola.api.domain.aulas.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/aulas")
+@SecurityRequirement(name = "bearer-key")
 public class AulasController {
 
     @Autowired
@@ -18,10 +20,9 @@ public class AulasController {
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendaAulaDTO dados){
 
-        //var dto = agenda.agendar(dados);
-        //return ResponseEntity.ok(dto);
-        agenda.agendar(dados);
-        return ResponseEntity.ok(new DadosDetalheAulaDTO( null, null, null, null));
+        var dto = agenda.agendar(dados);
+        return ResponseEntity.ok(dto);
+
     }
     @DeleteMapping
     @Transactional
