@@ -18,9 +18,9 @@ public interface ProfessoraRepository extends JpaRepository<Professora, Long> {
             p.modalidade = :modalidade
             and
             p.id not in(
-                select au.professora.id from Aula au                
+                select a.professora.id from Aula a
                 where
-                au.data = :data
+                a.data = :data
                 )
             order by rand()
             limit 1

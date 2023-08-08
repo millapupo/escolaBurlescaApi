@@ -21,7 +21,7 @@ public class SpringDocConfigurations {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")))
                 .info(new Info()
-                        .title("burlesca.escola API")
+                        .title("escolaBurlescaAPI")
                         .description("API Rest da aplicação Escola Burlesca, contendo as funcionalidades de CRUD de professoras e de alunas, além de agendamento e cancelamento de aulas experimentais")
                         .contact(new Contact()
                                 .name("Time Backend")
